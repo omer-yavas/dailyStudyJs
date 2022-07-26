@@ -1,273 +1,116 @@
-// comment section starts like this
+'use strict';
 
-//Challenge 1 and 2
-/*
-const massMark = 78;
-const heightMark = 1.69;
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// BANKIST APP
 
-const massJohn = 92;
-const heightJohn = 1.95;
-
-const BMI_mark = massMark / heightMark ** 2;
-const BMI_John = massJohn / heightJohn ** 2;
-
-markHigherBMI = BMI_mark > BMI_John;
-console.log(BMI_mark);
-console.log(BMI_John);
-console.log(markHigherBMI);
-
-if (BMI_mark > BMI_John) {
-  console.log("Mark's BMI is higher than John's");
-} else {
-  console.log("John's BMI is higher than Mark's");
-}
-
-if (BMI_mark > BMI_John) {
-  console.log(`Mark's BMI (${BMI_mark}) is higher than John's (${BMI_John})`);
-} else {
-  console.log("John's BMI is higher than Mark's");
-}
-*/
-
-//Challenge 3
-/*
-const data1Score1Dolphin = 96;
-const data1Score2Dolphin = 108;
-const data1Score3Dolphin = 89;
-
-const data1Score1Koala = 88;
-const data1Score2Koala = 91;
-const data1Score3Koala = 110;
-
-const averagedata1Dolphin =
-  (data1Score1Dolphin + data1Score2Dolphin + data1Score3Dolphin) / 3;
-const averagedata1Koala =
-  (data1Score1Koala + data1Score2Koala + data1Score3Koala) / 3;
-
-if (averagedata1Dolphin > averagedata1Koala) {
-  console.log("Data1 result:winner is dolphin");
-} else if (averagedata1Dolphin < averagedata1Koala) {
-  console.log("Data1 result:winner is Koala");
-} else {
-  console.log("Data1 result: Draw");
-}
-
-const data2Score1Dolphin = 92;
-const data2Score2Dolphin = 112;
-const data2Score3Dolphin = 101;
-
-const data2Score1Koala = 109;
-const data2Score2Koala = 95;
-const data2Score3Koala = 123;
-
-const averagedata2Dolphin =
-  (data2Score1Dolphin + data2Score2Dolphin + data2Score3Dolphin) / 3;
-const averagedata2Koala =
-  (data2Score1Koala + data2Score2Koala + data2Score3Koala) / 3;
-
-if (averagedata2Dolphin > averagedata2Koala && averagedata2Dolphin > 100) {
-  console.log("Data2 result:winner is dolphin");
-} else if (averagedata2Dolphin < averagedata2Koala && averagedata2Koala > 100) {
-  console.log("Data2 result:winner is Koala");
-} else if (averagedata2Dolphin > 100 && averagedata2Koala > 100) {
-  console.log("Data2 result: Draw");
-} else console.log("Data2 result: No winner");
-
-const data3Score1Dolphin = 92;
-const data3Score2Dolphin = 112;
-const data3Score3Dolphin = 101;
-
-const data3Score1Koala = 109;
-const data3Score2Koala = 95;
-const data3Score3Koala = 106;
-
-const averagedata3Dolphin =
-  (data3Score1Dolphin + data3Score2Dolphin + data3Score3Dolphin) / 3;
-const averagedata3Koala =
-  (data3Score1Koala + data3Score2Koala + data3Score3Koala) / 3;
-
-if (averagedata3Dolphin > averagedata3Koala && averagedata3Dolphin > 100) {
-  console.log("Data3 result:winner is dolphin");
-} else if (averagedata3Dolphin < averagedata3Koala && averagedata3Koala > 100) {
-  console.log("Data3 result:winner is Koala");
-} else if (
-  averagedata3Dolphin === averagedata3Koala &&
-  averagedata3Dolphin >= 100 &&
-  averagedata3Koala >= 100
-) {
-  console.log("Data3 result: Draw");
-} else console.log("Data3 result: No winner");
-
-*/
-
-//Challenge 4
-/*
-const bill = Number(prompt("how much the bill"));
-
-const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : (tip = bill * 0.2);
-console.log(
-  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}.`
-);
-*/
-//Challange 5
-/*
-const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
-const avgDolphin = calcAverage(44, 23, 71);
-const avgKoala = calcAverage(165, 54, 49);
-
-function checkWinner(a, b) {
-  if (a >= b * 2) {
-    console.log(`winner a: ${a} vs${b}`);
-  } else if (b >= a * 2) {
-    console.log(`winner b: ${a} vs${b}`);
-  } else {
-    console.log(`No winner: ${a} vs${b}`);
-  }
-}
-checkWinner(avgDolphin, avgKoala);
-*/
-//Challange 2
-/*
-function calcTip(x) {
-  if (x >= 50 && x <= 300) {
-    return x * 0.15;
-  } else {
-    return x * 0.2;
-  }
-}
-
-console.log(calcTip(100));
-bills = [125, 555, 44];
-console.log(bills);
-tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
-console.log(tips);
-total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
-console.log(total);
-*/
-
-//Challange 3
-/*
-const mark = {
-  fullName: "Mark Miller",
-  mass: 78,
-  height: 1.69,
-  calcBMI: function () {
-    this.BMI = this.mass / (this.height * this.height);
-    return this.BMI;
-  },
-};
-const john = {
-  fullName: "John Smith",
-  mass: 92,
-  height: 1.95,
-  calcBMI: function () {
-    this.BMI = this.mass / (this.height * this.height);
-    return this.BMI;
-  },
+// Data
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
 };
 
-john.BMI > mark.BMI
-  ? console.log(
-      `John's BMI ${john.calcBMI()} is higher than Mark's ${mark.calcBMI()}!`
-    )
-  : console.log(
-      `John's BMI ${john.calcBMI()} is smaller than Mark's ${mark.calcBMI()}!`
-    );
-*/
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
 
-//Challange4
-/*
-bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
-tips = [];
-totals = [];
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
 
-function calcTip(x) {
-  if (x >= 50 && x <= 300) {
-    return x * 0.15;
-  } else {
-    return x * 0.2;
-  }
-}
-for (i = 0; i < 10; i++) {
-  tips.push(calcTip(bills[i]));
-  totals.push(bills[i] + tips[i]);
-}
-console.log(bills);
-console.log(tips);
-console.log(totals);
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
 
-//arr = [];
-let sum = 0;
-function calcAverage(arr) {
-  for (i = 0; i < arr.length; i++) {
-    sum = sum + arr[i];
-  }
-  return sum / arr.length;
-}
-console.log(calcAverage(totals));
-*/
-//Challange on Developer Skills
-/*arr = [17, 21, 23];
-function printForecast(aaa) {
-  set = "";
-  for (let i = 0; i < aaa.length; i++) {
-    set = set + `${aaa[i]}C in ${i + 1} days...`;
-  }
-  console.log(set);
-}
-printForecast(arr);*/
+const accounts = [account1, account2, account3, account4];
 
-//----------------------Challange 3 ----------------------
-const gameEvents = new Map([
-  [17, '⚽️ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽️ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽️ GOAL'],
-  [80, '⚽️ GOAL'],
-  [92, '🔶 Yellow card'],
+// Elements
+const labelWelcome = document.querySelector('.welcome');
+const labelDate = document.querySelector('.date');
+const labelBalance = document.querySelector('.balance__value');
+const labelSumIn = document.querySelector('.summary__value--in');
+const labelSumOut = document.querySelector('.summary__value--out');
+const labelSumInterest = document.querySelector('.summary__value--interest');
+const labelTimer = document.querySelector('.timer');
+
+const containerApp = document.querySelector('.app');
+const containerMovements = document.querySelector('.movements');
+
+const btnLogin = document.querySelector('.login__btn');
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const btnLoan = document.querySelector('.form__btn--loan');
+const btnClose = document.querySelector('.form__btn--close');
+const btnSort = document.querySelector('.btn--sort');
+
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
+
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
 ]);
 
-//Create an array 'events' of the different game events that happened (no duplicates)
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const [...events] = new Set(gameEvents.values());
-console.log(events);
+///////////////////////////////Deposit and Withdrawal Part//////////////////
+containerMovements.innerHTML = ' ';
 
-//After the game has finished, is was found that the yellow card from minute 64
-//was unfair. So remove this event from the game events log.
-
-gameEvents.delete(64);
-console.log(gameEvents);
-
-//Compute and log the following string to the console: "An event happened, on
-//average, every 9 minutes" (keep in mind that a game has 90 minutes)
-
-const [...arrayV] = gameEvents.values();
-console.log(arrayV);
-
-for (let i = 0; i < events.length; i++) {
-  let counter = 0;
-  for (let j = 0; j < arrayV.length; j++) {
-    if (events[i] === arrayV[j]) counter += 1;
+const firstFunction = function (movement, i) {
+  if (movement > 0) {
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--deposit">${
+          i + 1
+        } deposit</div>
+        <div class="movements__value">${movement}€</div>
+      </div>
+    `;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  } else {
+    const html = `<div class="movements__row">
+    <div class="movements__type movements__type--withdrawal">${
+      i + 1
+    } withdrawal</div>
+    <div class="movements__value">${movement}€</div>
+  </div>`;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   }
-  let averageTime = Math.trunc(90 / counter);
-  console.log(
-    `${events[i]} happened, on average, every ${averageTime} minutes`
-  );
-}
+};
 
-/*Loop over 'gameEvents' and log each element to the console, marking
-whether it's in the first half or second half (after 45 min) of the game, like this:
-[FIRST HALF] 17:⚽GOAL*/
+movements.forEach(firstFunction);
 
-const [...arrayK] = gameEvents.keys();
-let period = ' ';
+////////////////////////////////Username Section //////////////////////////
+const createUserNames = function (arr1) {
+  arr1.forEach(function (str) {
+    str.userName = str.owner
+      .toLowerCase()
+      .split(' ')
+      .map(x => x[0])
+      .join('');
+  });
+};
+createUserNames(accounts);
+console.log(accounts);
 
-for (const cc of arrayK) {
-  cc < 46 ? (period = '[FIRST HALF] ') : (period = '[ SECOND HALF]');
-  console.log(`${period} ${cc}: ${gameEvents.get(cc)}`);
-}
+/////////////////////////////////////////////////////////////////////////////////////
