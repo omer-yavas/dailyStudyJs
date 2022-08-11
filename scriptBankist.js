@@ -70,7 +70,7 @@ const createUserNames = function (arr1) {
     str.userName = str.owner
       .toLowerCase()
       .split(' ')
-      .map(x => x[0])
+      .map((x) => x[0])
       .join('');
   });
 };
@@ -127,18 +127,18 @@ const balance = function (acc) {
 ///////////////////////////Summary Section//////////////////////////////////
 const summary = function (acc) {
   const incomes = acc.movements
-    .filter(mov => mov > 0)
+    .filter((mov) => mov > 0)
     .reduce((sum, a) => sum + a, 0);
   labelSumIn.innerHTML = `${incomes}€`;
 
   const out = acc.movements
-    .filter(mov => mov < 0)
+    .filter((mov) => mov < 0)
     .reduce((sum, a) => sum + a, 0);
   labelSumOut.innerHTML = `${Math.abs(out)}€`;
 
   const interest = acc.movements
-    .filter(mov => mov > 0)
-    .map(a => (a * acc.interestRate) / 100)
+    .filter((mov) => mov > 0)
+    .map((a) => (a * acc.interestRate) / 100)
     .reduce((sum, a) => sum + a, 0);
   labelSumInterest.innerHTML = `${interest}€`;
 };
@@ -175,7 +175,7 @@ const updateUI = function (x) {
 
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
-  accounts.forEach(x => {
+  accounts.forEach((x) => {
     if (
       x.pin === Number(inputLoginPin.value) &&
       x.userName === inputLoginUsername.value
@@ -193,7 +193,9 @@ btnLogin.addEventListener('click', function (e) {
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
 
-  const receiver = accounts.find(acc => acc.userName == inputTransferTo.value);
+  const receiver = accounts.find(
+    (acc) => acc.userName == inputTransferTo.value
+  );
 
   if (
     Number(inputTransferAmount.value) > 0 &&
@@ -213,7 +215,7 @@ btnTransfer.addEventListener('click', function (e) {
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputLoanAmount.value);
-  if (amount > 0 && currentAccount.movements.some(mov => mov > amount * 2)) {
+  if (amount > 0 && currentAccount.movements.some((mov) => mov > amount * 2)) {
     currentAccount.movements.push(amount);
     updateUI(currentAccount);
   }
@@ -228,7 +230,7 @@ btnClose.addEventListener('click', function (e) {
     Number(inputClosePin.value) === currentAccount.pin
   ) {
     const index = accounts.findIndex(
-      x => x.userName === inputCloseUsername.value
+      (x) => x.userName === inputCloseUsername.value
     );
     accounts.splice(index, 1);
     inputCloseUsername.value = ' ';
